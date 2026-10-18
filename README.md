@@ -37,13 +37,31 @@
 
 ### 方式二：PHP 内置服务器
 
-在项目根目录执行：
+在项目根目录分别启动前台与后台：
 
 ```bash
-php yii serve --port=8080
+php yii serve --port=8080 --docroot=frontend/web
+php yii serve --port=8081 --docroot=backend/web
 ```
 
-然后访问 `http://localhost:8080`。
+- 前台：<http://localhost:8080>
+- 后台：<http://localhost:8081>
+
+### 队友首次配置
+
+clone 项目后，先初始化环境配置：
+
+```bash
+php init --env=Development --overwrite=All
+```
+
+然后修改 `common/config/main-local.php` 中的数据库连接，把用户名、密码改成自己本机的 MySQL 账号密码：
+
+```php
+'dsn' => 'mysql:host=localhost;dbname=worldcup',
+'username' => '你的用户名',
+'password' => '你的密码',
+```
 
 ## 数据库初始化
 
